@@ -3,24 +3,114 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"> 
-
-    <h:head><title>Edição de usuários</title></h:head> 
+    <h:head>
+        <title>Edição de usuários</title>
+        <h:outputStylesheet library="bootstrap" name="css/bootstrap.css"/>
+        <h:outputStylesheet library="css" name="dashboard.css" />
+        <h:outputScript library="bootstrap" name="js/jquery.js" />
+        <h:outputScript library="bootstrap" name="js/bootstrap.js" />
+    </h:head> 
     <h:body> 
-        <h:form>
-            <h:messages />
-            <h:panelGrid columns="2">
-                <f:facet name="header">Edição de usuários</f:facet>
-                <f:facet name="footer">
-                    <div align="center">
-                        <h:commandButton value="Cancelar"  action="#{controleUsuario.cancelar()}" />
-                        <h:commandButton value="Gravar"  action="#{controleUsuario.gravar()}"/>	
+        <div class="container">
+            <h:form>
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+                        <!--Brand and toggle get grouped for better mobile display--> 
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="#">Praticas</a>                 
+
+                        </div>
+
+                        <!--Collect the nav links, forms, and other content for toggling--> 
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+                                <li>  
+                                    <h:commandLink value="Novo registro" action="#{controleUsuario.novo()}" class="btn btn-default " />
+                                </li>
+                                <li>  
+                                    <h:commandLink value="Gerenciamento" action="#{controleUsuario.listar()}" class="btn btn-default " />
+                                </li>
+
+                            </ul>
+
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sobre<span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">Sobre o Sistema</a></li>
+                                        <li><a href="#">Principais questões</a></li>
+                                        <li><a href="#">Quem somos</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="#">Desenvolvedores</a></li>
+                                    </ul>
+                                    <li> <h:link outcome="/index" value="Sair"/></li>
+                                </li>
+                            </ul>
+                        </div> <!-- .navbar-collapse -->
+                    </div> <!-- .container-fluid -->
+                </nav>
+            </h:form>
+        </div>
+        <div class="container">
+            <div class="jumbotron">
+                <h:form>
+                    <h:messages />
+                    <f:facet name="header">Edição de usuários</f:facet>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h:outputLabel value="Nome" class="form-control"/>
+                            <h:inputText value="#{controleUsuario.objeto.nome}" maxlength="40" size="40"  class="form-control"/>
+                        </div>
                     </div>
-                </f:facet>
-                <h:outputLabel value="ID" />
-                <h:inputText value="#{controleUsuario.objeto.id}"  readonly="true"/>
-                <h:outputLabel value="Nome" />
-                <h:inputText value="#{controleUsuario.objeto.nome}" maxlength="40" size="40" />
-            </h:panelGrid> 
-        </h:form>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <h:outputLabel value="Email"  class="form-control"/>
+                            <h:inputText value="#{controleUsuario.objeto.email}" maxlength="50" size="50"  class="form-control"/>
+                        </div>
+
+                        <div class="col-xs-6">
+                            <h:outputLabel value="CPF"  class="form-control" />
+                            <h:inputText value="#{controleUsuario.objeto.CPF}" maxlength="20" size="20"  class="form-control"/>                  
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <h:outputLabel value="Telefone"  class="form-control" />
+                            <h:inputText value="#{controleUsuario.objeto.telefone}" maxlength="20" size="20"  class="form-control"/>                
+                        </div>
+                        <div class="col-xs-6">
+                            <h:outputLabel value="Celular"  class="form-control" />
+                            <h:inputText value="#{controleUsuario.objeto.celular}" maxlength="20" size="20"  class="form-control"/>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h:outputLabel value="Observacao"  class="form-control"/>
+                            <h:inputText value="#{controleUsuario.objeto.observacao}" maxlength="1000" size="1000"  class="form-control"/>
+
+                        </div>
+                    </div>
+                    <br> </br>
+                    <button type="button" class="btn btn-default">
+                        <h:commandLink  value="Cadastrar"  action="#{controleUsuario.gravar()}">
+                            <span class="glyphicon glyphicon-user" aria-hidden="true"></span> 
+                        </h:commandLink>       
+                    </button>
+                    <button type="button" class="btn btn-default">
+                        <h:commandLink  value="Cancelar"  action="#{controleUsuario.cancelar()}">
+                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 
+                        </h:commandLink>       
+                    </button>
+
+                </h:form>
+            </div>
+        </div>
     </h:body> 
 </html>

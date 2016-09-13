@@ -1,17 +1,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
     <h:head>
-        <title>Praticas Listagem</title>
-
+        <title>Visão de usuários</title>
         <h:outputStylesheet library="bootstrap" name="css/bootstrap.css"/>
         <h:outputStylesheet library="css" name="dashboard.css" />
         <h:outputScript library="bootstrap" name="js/jquery.js" />
         <h:outputScript library="bootstrap" name="js/bootstrap.js" />
-    </h:head>
-    <h:body>
+    </h:head> 
+    <h:body> 
         <div class="container">
             <h:form>
                 <nav class="navbar navbar-default">
@@ -25,13 +24,14 @@
                                 <span class="icon-bar"></span>
                             </button>
                             <a class="navbar-brand" href="#">Praticas</a>                 
+
                         </div>
 
                         <!--Collect the nav links, forms, and other content for toggling--> 
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav">
                                 <li>  
-                                    <h:commandLink value="Cadastro" action="#{controleUsuario.novo()}" class="btn btn-default " />
+                                    <h:commandLink value="Novo registro" action="#{controleUsuario.novo()}" class="btn btn-default " />
                                 </li>
                                 <li>  
                                     <h:commandLink value="Gerenciamento" action="#{controleUsuario.listar()}" class="btn btn-default " />
@@ -57,49 +57,46 @@
                 </nav>
             </h:form>
         </div>
-
         <div class="container">
             <div class="jumbotron">
                 <h:form>
                     <h:messages />
+                    <f:facet name="header">Edição de usuários</f:facet>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h:outputLabel value="Nome" class="form-control"/>
+                            <h:outputLabel value="#{controleUsuario.objeto.nome}"  class="form-control"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <h:outputLabel value="Email"  class="form-control"/>
+                            <h:outputLabel value="#{controleUsuario.objeto.email}" class="form-control"/>
+                        </div>
 
-                    <h:dataTable value="#{controleUsuario.usuarios}" var="obj"
-                                 frame="box" rules="all" cellpadding="3" class="table table-striped ">
-                        <h:column>
-                            <f:facet name="header">ID</f:facet>
-                                #{obj.id}
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">Nome</f:facet>
-                                #{obj.nome}
-                        </h:column>			
-                        <h:column>
-                            <f:facet name="header">Email</f:facet>
-                                #{obj.email}
-                        </h:column>			
-                        <h:column>
-                            <f:facet name="header">CPF</f:facet>
-                                #{obj.CPF}
-                        </h:column>			
-                        <h:column>
-                            <f:facet name="header">Alterar</f:facet>
-                            <h:commandLink value="Alterar" 
-                                           action="#{controleUsuario.alterar(obj)}" />
-                        </h:column>		
-                        <h:column>
-                            <f:facet name="header">Excluir</f:facet>
-                            <h:commandLink value="Excluir" 
-                                           action="#{controleUsuario.excluir(obj)}"
-                                           onclick="if (!confirm('Confirma a exclusão do usuario?'))
-                                                       return false" />
-                        </h:column>				
-                        <h:column>
-                            <f:facet name="header">Visão</f:facet>
-                            <h:commandLink value="Visão" 
-                                           action="#{controleUsuario.visao(obj)}"/>
-                        </h:column>				
-                    </h:dataTable>
+                        <div class="col-xs-6">
+                            <h:outputLabel value="CPF"  class="form-control" />
+                            <h:outputLabel value="#{controleUsuario.objeto.CPF}"  class="form-control"/>                  
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <h:outputLabel value="Telefone"  class="form-control" />
+                            <h:outputLabel  value="#{controleUsuario.objeto.telefone}"   class="form-control"/>                
+                        </div>
+                        <div class="col-xs-6">
+                            <h:outputLabel value="Celular"  class="form-control" />
+                            <h:outputLabel  value="#{controleUsuario.objeto.celular}" class="form-control"/>
+                        </div>
+                    </div>
 
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h:outputLabel value="Observacao"  class="form-control" />
+                            <h:outputLabel value="#{controleUsuario.objeto.observacao}"  class="form-control"/>
+
+                        </div>
+                    </div>
                 </h:form>
             </div>
         </div>

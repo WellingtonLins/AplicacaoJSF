@@ -28,7 +28,7 @@ public class ControleUsuario implements Serializable{
     }
 
     public String listar() {
-        return "/privado/usuario/listar.xhtml?faces-redirect=true";
+        return "/paginas/usuario/listar.xhtml?faces-redirect=true";
     }
 
     public String novo() {
@@ -56,6 +56,11 @@ public class ControleUsuario implements Serializable{
     public String excluir(Usuario obj) {
         dao.excluir(obj);
         return "listar";
+    }
+    
+     public String visao(Usuario obj) {
+        objeto = obj;
+        return "visao";
     }
 
     public UsuarioDAO getDao() {
