@@ -8,7 +8,17 @@
     <packaging>war</packaging>
 
     <name>AplicacaoJSF</name>
-
+	<developers>
+		<developer>
+			<organization>IFCZ - Cajazeiras Disciplina Práticas</organization>
+			<name>Wellington Lins</name>
+			<email>wellingtonlins2013@gmail.com</email>
+			<roles>
+				<role>Desenvolvedor</role>
+				<role>Testador</role>
+			</roles>
+		</developer>
+	</developers>
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
